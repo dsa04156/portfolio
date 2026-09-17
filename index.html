@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#141615">
   <meta name="description" content="정진욱의 시스템 엔지니어링 포트폴리오. 클라우드와 엣지 AI부터 커널까지, 계측과 실험으로 성능의 차이를 만듭니다.">
-  <meta property="og:title" content="정진욱 — Below the surface.">
+  <meta property="og:title" content="정진욱 — Cloud · Edge AI · Kernel">
   <meta property="og:description" content="클라우드 · 엣지 AI · 커널. 시스템의 깊이에서 찾은 해답들.">
   <meta property="og:type" content="website">
-  <title>정진욱 — Systems, below the surface.</title>
+  <title>정진욱 — Cloud · Edge AI · Kernel</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c7f86c'/%3E%3Cpath d='M18 16h28v23c0 16-28 16-28 0' fill='none' stroke='%23141615' stroke-width='8'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css?v=slides-1">
   <link rel="stylesheet" href="readability.css?v=type-1">
+  <link rel="stylesheet" href="showcase.css?v=work-1">
   <script src="app.js?v=slides-1" defer></script>
+  <script src="showcase.js?v=work-1" defer></script>
 </head>
 <body>
   <a class="skip" href="#work">프로젝트로 바로가기</a>
@@ -28,8 +30,10 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <p class="eyebrow"><span class="tiny-cross">+</span> 정진욱 · 시스템을 만드는 개발자</p>
-          <h1 id="hero-title">Below<br>the <em>surface.</em><span class="title-period">*</span></h1>
-          <div class="hero-bottom"><p>보이지 않는 곳에서,<br><strong>눈에 보이는 차이를 만듭니다.</strong></p><a href="#work" class="round-link" aria-label="프로젝트 살펴보기">↓</a></div>
+          <p class="hero-expertise">CLOUD · EDGE AI · KERNEL</p>
+          <h1 id="hero-title">시스템의 깊이에서,<br><em>성능의 차이를.</em></h1>
+          <div class="hero-bottom"><p>복잡한 시스템의 병목을 찾고,<br><strong>설계와 실험으로 해결하는 개발자입니다.</strong></p></div>
+          <div class="hero-actions"><a class="primary-action" href="#work">선택한 작업들 <span>↓</span></a><a class="hero-github" href="https://github.com/dsa04156" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
         </div>
         <div class="system-art" aria-label="클라우드, 엣지, 커널 작업 영역 탐색">
           <div class="art-coordinates" aria-hidden="true"><span>FIG. 01 — SYSTEM LAYERS</span><span class="crosshair">+</span></div>
@@ -45,30 +49,32 @@
     <div class="skill-ticker" aria-label="주요 기술"><div aria-hidden="true">KUBERNETES <i>✳</i> EDGE AI <i>✳</i> eBPF <i>✳</i> OBSERVABILITY <i>✳</i> CLOUD INFRASTRUCTURE <i>✳</i> KUBERNETES <i>✳</i> EDGE AI <i>✳</i> eBPF <i>✳</i> OBSERVABILITY <i>✳</i> CLOUD INFRASTRUCTURE <i>✳</i></div></div>
 
     <section id="work" class="work section-pad">
-      <div class="section-heading reveal"><p class="eyebrow">01 / SELECTED WORK</p><h2>깊이 파고들고.<br><span>결과로 이야기합니다.</span></h2><p class="section-intro">현장의 문제에서 시작해<br>설계, 구현, 검증으로 이어진 작업들.</p></div>
-
-      <article class="project project-edge reveal">
-        <button class="project-visual edge-visual has-real-image" data-project="edge" aria-label="이기종 엣지 AI 프로젝트 상세 보기">
-          <span class="visual-label">RUNTIME ORCHESTRATION / 2026</span>
-          <div class="slide-image-stage dark-stage"><div class="screen-chrome" aria-hidden="true"><i></i><i></i><i></i><span>DEVICE OPERATIONS</span></div><img src="assets/edge-dashboard.png" width="1024" height="600" loading="lazy" decoding="async" alt="직접 구축한 KubeEdge 디바이스 운영 대시보드: 노드, 센서, 서비스 상태 통합 관측"></div>
-          <span class="visual-footer">직접 구현한 운영 대시보드<span class="visual-open">↗</span></span>
-        </button>
-        <div class="project-info"><div class="project-overline"><span>01 — EDGE AI</span><span>RESEARCH & ENGINEERING</span></div><h3><button data-project="edge">장비는 달라도,<br>하나의 AI 워크플로우.</button></h3><p>x86, Jetson, Raspberry Pi가 협력하는 실행 환경. 실행 중 발생하는 병목을 관측하고, 워크플로우의 처리 단계를 재배치했습니다.</p><div class="project-result"><strong>12.7<span>%</span></strong><p>평균 E2E 지연 감소<br><small>정적 배치 대비 · 테스트베드 실험</small></p></div><div class="tags"><span>KubeEdge</span><span>Kubernetes</span><span>Prometheus</span></div><button class="text-link" data-project="edge">문제 해결 과정 보기 <span>↗</span></button></div>
-      </article>
-
-      <article class="project project-kernel reveal">
-        <button class="project-visual kernel-visual has-real-image" data-project="kernel" aria-label="eBPF와 강화학습 프로젝트 상세 보기"><span class="visual-label">TAIL LATENCY CONTROL / MASTER’S RESEARCH</span><div class="slide-image-stage chart-stage"><img src="assets/kernel-results.png" width="1432" height="1750" loading="lazy" decoding="async" alt="발표자료 원본 실험 그래프: p99 지연, TCP 송신 버퍼, RTT, 처리량 비교"></div><span class="visual-footer">발표자료 원본 · 성능 비교 그래프<span class="visual-open">↗</span></span></button>
-        <div class="project-info"><div class="project-overline"><span>02 — KERNEL & NETWORK</span><span>RESEARCH</span></div><h3><button data-project="kernel">평균 뒤에 숨은<br>지연을 줄이다.</button></h3><p>느린 요청의 원인을 커널에서 찾았습니다. eBPF 계측과 강화학습을 연결해 MQTT 혼잡 환경의 전송 간격과 배치 크기를 제어했습니다.</p><div class="project-result"><strong>2.2<span>s</span></strong><p>혼잡 환경의 p99 지연<br><small>기준 실험 93초 → 제어 적용 2.2초</small></p></div><div class="tags"><span>eBPF</span><span>Reinforcement Learning</span><span>MQTT</span></div><button class="text-link" data-project="kernel">커널에서 찾은 해답 <span>↗</span></button></div>
-      </article>
-
-      <article class="project project-data reveal">
-        <button class="project-visual data-visual has-real-image" data-project="robot" aria-label="반도체 로봇 데이터 프로젝트 상세 보기"><span class="visual-label">INDUSTRIAL DATA / 2023</span><div class="slide-image-stage light-stage"><div class="screen-chrome" aria-hidden="true"><i></i><i></i><i></i><span>ROBOT HEALTH MONITOR</span></div><img src="assets/robot-dashboard.png" width="951" height="465" loading="lazy" decoding="async" alt="반도체 제조 로봇 상태 관리 화면: 상태 진단과 실시간 시계열 데이터 그래프"></div><span class="visual-footer">직접 구현한 데이터 시각화 화면<span class="visual-open">↗</span></span></button>
-        <div class="project-info"><div class="project-overline"><span>03 — DATA & BACKEND</span><span>SSAFY · 기업 연계</span></div><h3><button data-project="robot">3천만 건의 데이터,<br>7초 안에 한눈에.</button></h3><p>반도체 제조 로봇의 1년 치 상태 데이터를 조회하는 시스템. 저장 구조부터 쿼리, 압축, 샤딩까지 병목을 단계적으로 개선했습니다.</p><div class="project-result"><strong>7<span>s</span></strong><p>평균 데이터 조회 시간<br><small>약 3,000만 건 · 프로젝트 측정 기준</small></p></div><div class="tags"><span>Spring Boot</span><span>MongoDB</span><span>SSE</span></div><button class="text-link" data-project="robot">데이터 구조의 변화 보기 <span>↗</span></button></div>
-      </article>
-
-      <div class="compact-projects reveal">
-        <button class="compact-project" data-project="cloud"><span class="compact-number">04 / CLOUD</span><div class="compact-image"><img src="assets/cloud-architecture.png" width="1479" height="1600" loading="lazy" decoding="async" alt="직접 설계한 AWS VPC, ECS, RDS와 배포 파이프라인 구성도"></div><h3>서비스가 계속<br>살아있도록.</h3><p>모두의 튜터 · AWS 인프라와 배포 자동화</p><span class="compact-tags">ECS / VPC / RDS / CI·CD</span><span class="compact-arrow">↗</span></button>
-        <button class="compact-project" data-project="quake"><span class="compact-number">05 / OBSERVABILITY</span><div class="compact-image"><img src="assets/earthquake-dashboard.png" width="1147" height="568" loading="lazy" decoding="async" alt="전국 센서 위치와 상태를 시각화한 지진 관제 대시보드"></div><h3>데이터를 넘어,<br>상황을 읽는 관제.</h3><p>지진 데이터 처리와 실시간 모니터링</p><span class="compact-tags">Kafka / Next.js / Grafana</span><span class="compact-arrow">↗</span></button>
+      <div class="work-heading">
+        <p class="eyebrow">01 / SELECTED WORK</p>
+        <h2>문제에서 시작해,<br><span>동작하는 시스템으로.</span></h2>
+        <p class="work-intro">연구부터 실제 서비스까지.<br> 다섯 개의 작업에 담긴 설계와 검증.</p>
+      </div>
+      <div class="work-explorer">
+        <div class="work-sidebar">
+          <p class="index-label">PROJECT INDEX <span>05</span></p>
+          <div class="work-tabs" role="tablist" aria-label="프로젝트 선택" aria-orientation="vertical">
+            <button id="tab-edge" class="work-tab" role="tab" aria-selected="true" aria-controls="work-panel" tabindex="0" data-work="edge"><span class="tab-number">01</span><span class="tab-copy"><strong>이기종 엣지 AI</strong><small>실행 중 워크플로우 재배치</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+            <button id="tab-kernel" class="work-tab" role="tab" aria-selected="false" aria-controls="work-panel" tabindex="-1" data-work="kernel"><span class="tab-number">02</span><span class="tab-copy"><strong>커널·네트워크</strong><small>eBPF와 강화학습 기반 제어</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+            <button id="tab-robot" class="work-tab" role="tab" aria-selected="false" aria-controls="work-panel" tabindex="-1" data-work="robot"><span class="tab-number">03</span><span class="tab-copy"><strong>로봇 데이터 플랫폼</strong><small>3천만 건의 데이터 조회 개선</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+            <button id="tab-cloud" class="work-tab" role="tab" aria-selected="false" aria-controls="work-panel" tabindex="-1" data-work="cloud"><span class="tab-number">04</span><span class="tab-copy"><strong>AWS 서비스 인프라</strong><small>모두의 튜터 · 배포와 운영</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+            <button id="tab-quake" class="work-tab" role="tab" aria-selected="false" aria-controls="work-panel" tabindex="-1" data-work="quake"><span class="tab-number">05</span><span class="tab-copy"><strong>실시간 지진 관제</strong><small>데이터 처리와 상태 모니터링</small></span><span class="tab-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <p class="index-note">프로젝트를 선택해 살펴보세요.<br>설계 과정과 실험 결과를 담았습니다.</p>
+        </div>
+        <article id="work-panel" class="work-panel" role="tabpanel" aria-labelledby="tab-edge" tabindex="0" data-current="edge">
+          <div class="showcase-topline"><span id="showcase-category">EDGE AI / RESEARCH & ENGINEERING</span><span id="showcase-count">01 — 05</span></div>
+          <h3 id="showcase-title">장비는 달라도,<br>하나의 AI 워크플로우.</h3>
+          <button id="showcase-image" class="showcase-image" aria-label="디바이스 운영 대시보드 이미지 확대"><img id="showcase-img" src="assets/edge-dashboard.png" width="1024" height="600" decoding="async" alt="직접 구축한 KubeEdge 디바이스 운영 대시보드"><span class="showcase-image-label"><span id="showcase-image-caption">직접 구현한 운영 대시보드</span><span>이미지 확대 ↗</span></span></button>
+          <div class="showcase-outcome"><div><span class="outcome-label">PROJECT OUTCOME</span><p id="showcase-metric"><strong>12.7<small>%</small></strong><span>평균 E2E 지연 감소</span></p></div><p id="showcase-condition">정적 배치 대비<br>테스트베드 실험 기준</p></div>
+          <div class="showcase-details"><p id="showcase-description">x86, Jetson, Raspberry Pi가 협력하는 실행 환경. 병목을 관측하고 실행 중인 워크플로우의 처리 단계를 재배치했습니다.</p><dl><div><dt>담당 역할</dt><dd id="showcase-role">엣지 실행 환경 · 워크플로우와 관측 체계</dd></div><div><dt>사용 기술</dt><dd id="showcase-stack">KubeEdge · Kubernetes · Prometheus</dd></div></dl></div>
+          <div class="showcase-actions"><button class="case-action" id="showcase-case" data-project="edge">문제 해결 과정 읽기 <span>↗</span></button><button id="showcase-next" aria-label="다음 작업 미리보기">다음 작업 <span>→</span></button></div>
+          <p id="work-status" class="visually-hidden" role="status"></p>
+        </article>
       </div>
     </section>
 

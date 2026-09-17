@@ -9,10 +9,11 @@ Interactive Korean systems-engineering portfolio. Built with HTML, CSS, and vani
 - Responsive layouts, reduced-motion support, deferred offscreen animation
 - Research links to the author's public repositories
 - Six original images extracted from the author's presentation, with accessible full-screen image viewing and original-size zoom
+- Five-project explorer with a persistent desktop index, horizontal mobile tabs, keyboard navigation, and role/outcome previews
 
 ## Edit and preview
 
-Edit `index.html` for page content, `styles.css` for the base design, `readability.css` for typography and readability adjustments, and `app.js` for case studies and interactions. Serve this directory using any static HTTP server. No build step or API keys are required.
+Edit `index.html` for page content, `styles.css` for the base design, `readability.css` for typography, and `showcase.css` for the hero and project explorer. `app.js` contains case studies, images, and canvas interactions; `showcase.js` contains the project previews and accessible selection behavior. Serve this directory using any static HTTP server. No build step or API keys are required. See `DESIGN.md` for the reference-led design decisions.
 
 GitHub Pages serves the `main` branch root. Pushing to `main` publishes updates.
 
