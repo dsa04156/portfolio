@@ -12,7 +12,7 @@ Interactive Korean systems-engineering portfolio. Built with HTML, CSS, and vani
 
 ## Edit and preview
 
-Edit `index.html` for page content, `styles.css` for design, and `app.js` for case studies and interactions. Serve this directory using any static HTTP server. No build step or API keys are required.
+Edit `index.html` for page content, `styles.css` for the base design, `readability.css` for typography and readability adjustments, and `app.js` for case studies and interactions. Serve this directory using any static HTTP server. No build step or API keys are required.
 
 GitHub Pages serves the `main` branch root. Pushing to `main` publishes updates.
 

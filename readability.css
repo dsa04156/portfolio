@@ -1,0 +1,144 @@
+/* Readable type and a clearer hierarchy across project and detail views. */
+:root { --muted: #bec5b8; }
+body { font-size: 1.125rem; }
+.header-role { font-size: .875rem; }
+nav { font-size: 1rem; font-weight: 600; }
+nav a { padding-block: 10px; }
+.hero-copy .eyebrow { font-size: 1rem; }
+.hero-bottom p { font-size: 1.5rem; line-height: 1.6; }
+.hero-bottom strong { font-weight: 600; }
+.hero-topline, .hero-footer, .hero-footer a { font-size: .8125rem; }
+.hero-footer > span:nth-child(2) { font-size: 1rem; }
+.art-caption p { font-size: 1.0625rem; color: #d4dec9; }
+.art-caption { bottom: 90px; }
+.art-caption > span { font-size: .875rem; }
+.layer-switch button { font-size: .9375rem; min-height: 44px; }
+.eyebrow, .section-heading .eyebrow, .about-top > .eyebrow { font-size: .875rem; }
+.section-heading h2 { font-weight: 600; }
+.section-heading h2 > span { color: #c8d5ba; }
+.section-intro { font-size: 1.1875rem; line-height: 1.8; }
+.project, .project-kernel { gap: 4.5vw; }
+.project-info { min-width: 0; }
+.project-overline { font-size: .875rem; color: var(--lime); flex-wrap: wrap; gap: 8px 15px; }
+.project-overline > span:last-child { font-size: .8125rem; color: var(--muted); }
+.project h3 { font-size: clamp(2rem, 3.4vw, 3.25rem); font-weight: 650; letter-spacing: -.045em; line-height: 1.32; word-break: keep-all; overflow-wrap: break-word; }
+.project-info > p { font-size: 1.1875rem; line-height: 1.85; color: #cbd1c5; max-width: 36em; }
+.project-result { gap: 22px; flex-wrap: wrap; padding: 24px 22px; margin: 28px 0; background: #c7f86c0b; border-left: 3px solid var(--lime); }
+.project-result > strong { font-size: clamp(4rem, 5.3vw, 5.25rem); font-weight: 500; letter-spacing: -.065em; }
+.project-result > strong span { font-size: 2rem; }
+.project-result p { font-size: 1rem; line-height: 1.7; font-weight: 600; }
+.project-result small { display: inline-block; font-size: .875rem; line-height: 1.65; font-weight: 400; margin-top: 5px; color: #b7c4aa; }
+.tags { gap: 8px; }
+.tags > span { font-size: .875rem; color: #d3dccb; padding: 6px 12px; border-color: #55604b; }
+.text-link { width: fit-content; font-size: 1rem; font-weight: 600; padding: 13px 18px; gap: 25px; border: 1px solid #697e50; border-radius: 3px; background: #252e1e; }
+.text-link:hover { background: #344524; }
+.visual-label { font-size: .8125rem; letter-spacing: .5px; line-height: 1.5; }
+.visual-footer { font-size: 1rem; font-weight: 600; }
+.visual-open { flex-shrink: 0; }
+.compact-number { font-size: .875rem; }
+.compact-project h3 { font-size: 2.5rem; font-weight: 600; letter-spacing: -.045em; }
+.compact-project p { font-size: 1.125rem; line-height: 1.75; }
+.compact-tags { font-size: .875rem; letter-spacing: .3px; color: #bcc9ad; padding-right: 25px; }
+.about h2 { font-weight: 600; }
+.about h2 em { color: #536747; }
+.about-description p, .about-description p + p { font-size: 1.1875rem; line-height: 1.9; color: #424f38; }
+.principles h3 { font-weight: 600; }
+.principles p { font-size: 1.0625rem; line-height: 1.8; color: #4e5b44; }
+.principles span { font-size: .875rem; color: #57684a; }
+.journey h3 { font-size: 1.375rem; font-weight: 600; }
+.journey span { font-size: .875rem; color: #56634c; }
+.journey b { font-size: 1.1875rem; font-weight: 600; }
+.journey small { font-size: 1rem; color: #546149; }
+.journey > div > p { grid-template-columns: 130px 1fr; padding-block: 22px; }
+.research h2 { font-size: clamp(2rem, 2.8vw, 2.75rem); font-weight: 600; }
+.research-list h3 { font-size: 1.5rem; line-height: 1.5; font-weight: 600; }
+.research-list h3 small { display: inline-block; font-size: 1rem; margin-top: 6px; line-height: 1.7; }
+.research-list > a > span:first-child, .research-entry > span:first-child { font-size: .875rem; color: #b7c99f; }
+.research-kind { font-size: .75rem; }
+.research-list > a, .research-entry { padding-block: 30px; }
+.contact-bottom, .contact-bottom > button { font-size: 1.125rem; }
+.contact-top > .eyebrow { font-size: .875rem; }
+footer, #copy-status { font-size: .8125rem; }
+dialog { width: min(960px, calc(100vw - 32px)); }
+#dialog-body h2 { font-size: 3rem; font-weight: 650; line-height: 1.35; }
+#dialog-body .dialog-summary { font-size: 1.25rem; color: #465c37; }
+.dialog-meta { font-size: 1rem; flex-wrap: wrap; color: #475b3b; }
+.dialog-block { grid-template-columns: 85px 1fr; }
+.dialog-block h3 { font-size: 1.0625rem; font-weight: 700; color: #45602f; }
+.dialog-block p, .dialog-block li { font-size: 1.125rem; line-height: 1.9; }
+.dialog-block li + li { margin-top: 10px; }
+.dialog-insight { font-size: 1.125rem; line-height: 1.85; border-left: 3px solid #6c8b4c; }
+.dialog-source, .project-gallery figcaption { font-size: .875rem; color: #536348; }
+.dialog-repo, .dialog-bottom button, .dialog-top button { font-size: 1rem; }
+.dialog-top > span { font-size: .875rem; color: #526744; }
+.image-expand-hint, .image-toolbar button { font-size: .9375rem; padding: 9px 12px; }
+.image-toolbar h2 { font-size: 1.25rem; }
+#image-caption { font-size: .9375rem; color: #c0ccb5; }
+@media (min-width: 761px) and (max-width: 1100px) {
+  .project, .project-kernel { grid-template-columns: 1fr 1fr; gap: 35px; }
+  .project-result { padding: 20px 16px; gap: 15px; }
+  .project-info > p { font-size: 1.125rem; }
+  .research { grid-template-columns: 1fr; gap: 40px; }
+  .hero-footer > span:nth-child(2) { display: none; }
+}
+@media (max-width: 760px) {
+  .header { padding-inline: 5vw; gap: 15px; }
+  .header-role { font-size: .75rem; }
+  nav { gap: 18px; font-size: .9375rem; }
+  .hero-copy .eyebrow { font-size: .9375rem; letter-spacing: 0; }
+  .hero-bottom { gap: 14px; margin-right: 0; }
+  .hero-bottom p { font-size: 1.25rem; }
+  .round-link { flex-shrink: 0; }
+  .hero-topline, .hero-footer, .hero-footer a { font-size: .6875rem; letter-spacing: .2px; }
+  .hero-footer { flex-wrap: wrap; }
+  .art-caption { bottom: 84px; gap: 15px; }
+  .art-caption p { font-size: 1rem; }
+  .layer-switch button { font-size: .875rem; padding-inline: 15px; }
+  .section-heading h2 { font-size: clamp(2rem, 8.9vw, 3.125rem); line-height: 1.35; }
+  .section-intro { font-size: 1.125rem; }
+  .project, .project-kernel { gap: 27px; margin-bottom: 75px; }
+  .project h3 { font-size: clamp(1.875rem, 8.8vw, 2.625rem); line-height: 1.4; letter-spacing: -.04em; }
+  .project-info > p { font-size: 1.125rem; line-height: 1.85; }
+  .project-overline { margin-bottom: 18px; font-size: .8125rem; }
+  .project-overline > span:last-child { font-size: .75rem; }
+  .project-result { padding: 20px 17px; gap: 17px; }
+  .project-result > strong { font-size: 4.25rem; }
+  .project-result p { font-size: 1rem; }
+  .project-result small { font-size: .875rem; }
+  .tags > span { font-size: .8125rem; padding: 5px 10px; }
+  .text-link { font-size: 1rem; padding: 12px 16px; }
+  .visual-label { font-size: .75rem; }
+  .visual-footer { font-size: .875rem; }
+  .project-visual { padding: 20px; }
+  .compact-project h3 { font-size: 2.125rem; }
+  .compact-project p { font-size: 1.0625rem; }
+  .compact-tags { font-size: .8125rem; line-height: 1.7; }
+  .about h2 { font-size: clamp(2rem, 9vw, 2.875rem); }
+  .about-description p, .about-description p + p { font-size: 1.125rem; }
+  .principles { grid-template-columns: 1fr; gap: 24px; }
+  .principles h3 { font-size: 1.875rem; letter-spacing: -1px; margin: 12px 0; }
+  .principles p { font-size: 1.0625rem; }
+  .journey > div > p { grid-template-columns: 1fr; gap: 8px; }
+  .journey span { grid-row: auto; }
+  .journey b { font-size: 1.125rem; }
+  .journey small { font-size: 1rem; line-height: 1.7; }
+  .research h2 { font-size: 2.125rem; }
+  .research-list h3 { font-size: 1.3125rem; overflow-wrap: anywhere; }
+  .research-list h3 small { font-size: 1rem; }
+  .contact-top > .eyebrow { font-size: .75rem; }
+  .contact-bottom, .contact-bottom > button { font-size: 1rem; }
+  footer { font-size: .75rem; }
+  #dialog-body h2 { font-size: 2rem; }
+  #dialog-body .dialog-summary { font-size: 1.125rem; }
+  .dialog-meta { font-size: .9375rem; gap: 12px; }
+  .dialog-block { grid-template-columns: 1fr; gap: 10px; }
+  .dialog-block p, .dialog-block li, .dialog-insight { font-size: 1.0625rem; }
+  .dialog-source, .project-gallery figcaption { font-size: .875rem; }
+  .dialog-top { padding: 15px; }
+  .dialog-top > span { font-size: .75rem; letter-spacing: .3px; }
+  .dialog-top button { font-size: .9375rem; gap: 8px; }
+  .image-toolbar { flex-wrap: wrap; }
+  .image-toolbar h2 { font-size: 1rem; }
+  .image-toolbar button { font-size: .875rem; }
+  #image-caption { font-size: .875rem; }
+}
