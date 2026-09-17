@@ -201,8 +201,8 @@ function draw(ms) {
   smoothX += (pointerX - smoothX) * .05;
   smoothY += (pointerY - smoothY) * .05;
   ctx.clearRect(0, 0, w, h);
-  const scale = Math.min(w / 650, h / 560);
-  const centerX = w * .52, centerY = h * .41;
+  const scale = Math.min(w / 650, h / 630);
+  const centerX = w * .52, centerY = h * .49;
   const surfaces = [];
   function rotate(p, rx, ry, rz) {
     let [x, y, z] = p;

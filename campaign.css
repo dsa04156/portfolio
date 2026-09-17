@@ -200,3 +200,78 @@ dialog button:focus-visible, dialog a:focus-visible { outline-color: #ff994f; }
   .hero-name { font-size: 23px; }.hero-identity h2 { font-size: 14px; }
   .system-art { top: 325px; height: 365px; }.hero-work-link { top: 715px; bottom: auto; }
 }
+
+/* Readability pass: natural layout keeps text separate from the moving artwork. */
+.header { padding-inline: 7vw; }
+.header-role { font-size: 14px; color: #f5f3ef; }
+.header nav { color: #eeebe6; font-size: 16px; }
+.hero { display: grid; grid-template-columns: 1fr 1.7fr 1fr; gap: 30px; align-items: start; height: auto; min-height: 100svh; padding: 130px 7vw 30px; }
+.hero h1 { grid-column: 1 / -1; font-size: clamp(62px, 9vw, 160px); font-weight: 650; line-height: 1.08; letter-spacing: -.035em; color: #fff; }
+.hero h1 > span + span { color: #ff8d43; margin-top: 2px; }
+.hero-identity { position: static; grid-column: 1; grid-row: 2; padding-top: 30px; }
+.hero-name { font-size: 38px; font-weight: 700; color: #fff; }
+.hero-identity h2 { font-size: 24px; font-weight: 600; line-height: 1.65; }
+.identity-stack { font-size: 18px; line-height: 1.7; color: #d5d1ca; }
+.hero-github { font-size: 17px; color: #eeeae3; padding-block: 10px; }
+.hero-manifesto { position: static; grid-column: 3; grid-row: 2; padding-top: 34px; font-size: clamp(22px, 2vw, 30px); color: #f5f1e9; line-height: 1.65; letter-spacing: -.4px; }
+.hero-manifesto strong { color: #ff9d5c; }
+.system-art { position: relative; inset: auto; grid-column: 2; grid-row: 2; width: 100%; max-width: none; height: auto; margin: 0; display: flex; flex-direction: column; gap: 15px; }
+.system-art #system-canvas { position: static; inset: auto; display: block; width: 100%; height: 330px; }
+.orbit-controls { position: static; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 18px; }
+.layer-switch { flex-wrap: wrap; justify-content: center; }
+.layer-switch button { font-size: 15px; font-weight: 600; min-height: 44px; padding: 9px 16px; color: #eeeae3; }
+#motion-toggle { font-size: 14px; color: #ddd6cd; min-height: 44px; padding: 10px; }
+.art-caption { position: static; justify-content: center; gap: 14px; padding: 0 8px; }
+.art-caption > span { font-size: 13px; color: #ff9d5c; flex-shrink: 0; }
+.art-caption p { font-size: 16px; line-height: 1.65; color: #e2dcd2; min-height: 0; word-break: keep-all; }
+.hero-work-link { position: static; grid-column: 1; grid-row: 3; width: auto; height: auto; min-height: 52px; border-radius: 32px; flex-direction: row; padding: 14px 22px; font-size: 16px; gap: 18px; background: #ff8d43; color: #111; justify-self: start; }
+.hero-work-link:hover { transform: translateY(-3px); background: #ffa76d; }
+.hero-footer { position: static; grid-column: 2 / -1; grid-row: 3; align-self: center; padding: 12px 0; font-size: 12px; color: #b8b1a7; }
+.hero-footer a { font-size: 12px; color: #e2dcd2; }
+.work-intro, #showcase-description, .about-description p, .about-description p + p, .principles p { color: #e3ded6; }
+.index-label, .index-note, .tab-number { color: #c6bdb0; }
+.tab-copy small { font-size: 15px; color: #ccc2b4; }
+.showcase-topline, .showcase-image-label, [data-current=kernel] .showcase-image-label, [data-current=robot] .showcase-image-label { font-size: 14px; color: #d7cbbb; }
+.showcase-image-label > span:last-child { color: #ffac75; }
+.outcome-label, .showcase-details dt { font-size: 14px; color: #cebaa0; }
+#showcase-condition { font-size: 15px; color: #ded2c1; }
+.showcase-details dd { font-size: 17px; color: #eee5d8; }
+.journey span { font-size: 15px; color: #cfbfa9; }
+.journey small, .research-list h3 small { color: #ded4c5; }
+.dialog-source, .project-gallery figcaption { font-size: 15px; color: #d2c3ae; }
+#dialog-body .dialog-summary, .dialog-meta { color: #e4d2bb; }
+.dialog-top > span { color: #dfc9ad; }
+.index-note { font-size: 15px; }
+.skip { color: #111; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .hero { padding-inline: 6vw; grid-template-columns: 1fr 1.6fr 1fr; gap: 22px; }
+  .hero-name { font-size: 32px; }.hero-identity h2 { font-size: 21px; }
+  .identity-stack { font-size: 16px; }.hero-manifesto { font-size: 22px; }
+  .system-art #system-canvas { height: 280px; }
+  .hero-footer > span:last-child { display: none; }
+}
+@media (max-width: 760px) {
+  .header { padding-inline: 6vw; gap: 14px; }
+  .header-role { font-size: 12px; }.header nav { font-size: 15px; gap: 18px; }
+  .hero { padding: 115px 6vw 30px; grid-template-columns: 1fr 1fr; gap: 28px 22px; min-height: 0; }
+  .hero h1 { font-size: 10.9vw; font-weight: 650; line-height: 1.17; letter-spacing: -.035em; }
+  .hero-identity { grid-column: 1; padding: 0; }
+  .hero-name { font-size: 30px; }
+  .hero-identity h2 { font-size: 19px; line-height: 1.6; word-break: keep-all; }
+  .identity-stack { font-size: 15px; line-height: 1.7; }
+  .hero-github { font-size: 16px; margin-top: 8px; }
+  .hero-manifesto { grid-column: 2; padding: 4px 0 0; font-size: clamp(18px, 3.7vw, 25px); }
+  .system-art { grid-column: 1 / -1; grid-row: 3; gap: 14px; }
+  .system-art #system-canvas { height: 300px; }
+  .orbit-controls { gap: 5px 10px; }
+  .layer-switch button { font-size: 14px; padding: 9px 14px; }
+  #motion-toggle { font-size: 14px; }
+  .art-caption p { font-size: 16px; }
+  .hero-work-link { grid-column: 1 / -1; grid-row: 4; justify-self: center; font-size: 16px; }
+  .hero-footer { grid-column: 1 / -1; grid-row: 5; font-size: 11px; padding: 8px 0; }
+  .hero-footer a { font-size: 11px; }
+  .hero-footer > span:last-child { display: none; }
+  .showcase-topline { font-size: 12px; }
+  .showcase-image-label, [data-current] .showcase-image-label { font-size: 12px; }
+  #showcase-condition { font-size: 14px; }
+}
