@@ -1,34 +1,23 @@
-# Current visual direction — 2026-09-17
+# Precision Core — selected option 1
 
-The user selected [Hanwha Finance recruitment](https://www.recruit-hanwhafinance.com/) as the visual reference. Its desktop hero and internal philosophy section were inspected directly. The portfolio now follows its black background, orange oversized headline, widely spaced composition, moving orbital graphic, circular action links, and dark content panels.
+The user selected the first displayed generated portfolio mockup. Its visual language is near-black, white and warm orange, oversized two-line typography, and a large titanium/amber-glass gyroscope. The previous Hanwha Finance reference informed the broader direction; the selected mockup is the implementation target.
 
-The headline and all portfolio content remain original. The canvas sculpture is independently implemented with mathematical 3D rotation, perspective, depth-sorted bands, and pointer response. No company logo, recruitment copy, video, or graphic asset was imported. The earlier project-index interaction remains, restyled to match the new direction.
+The hero uses editable HTML text and navigation with a separately generated raster sculpture. All five case studies retain their supported claims and original presentation screenshots. There are no invented awards, clients or performance numbers.
 
-The canvas pauses offscreen and in background tabs, supports explicit pause/resume without jumping time, and respects reduced-motion preferences. The mobile layout was checked at 390px and 320px; a caption/action overlap was corrected. Preview switching, project detail, motion controls, and contact navigation were checked in the browser.
+## Composition and interaction
 
----
+- Desktop: left editorial copy, right sculpture, compact header, project CTA, GitHub link and restrained bottom index.
+- Mobile: readable copy and actions first, then the sculpture. No text sits over the artwork.
+- Typography: Manrope 800 headline, Pretendard Korean, existing Manrope/DM Sans UI. The first headline line is optically widened to match the reference.
+- Pointer depth moves the image by at most 9px horizontally and 6px vertically. No autonomous animation or rendering loop. Touch and reduced-motion users receive a static hero.
+- The existing project explorer supports keyboard navigation, selected states, case-study dialogs and original-image zoom.
 
-# Portfolio design notes
+## Assets
 
-## Reference review — 2026-09-17
+assets/precision-core.png: built-in image generation from the selected reference, 1122 × 1402. Direction: physically rendered precision-machined titanium rings, smoked amber glass, orange luminous core, restrained studio highlights, subtle reflective floor and near-black edges. No web UI, text or logo. A second generation pass blends the bottom reflection into the dark background. This decorative artwork is separate from genuine project images.
 
-- [Brittany Chiang](https://brittanychiang.com/): clear personal identity and role; persistent desktop navigation; experience and projects paired with concise descriptions and technologies.
-- [Dennis Snellenberg](https://dennissnellenberg.com/work): large editorial titles, generous spacing, and a project index that supports quickly scanning the work.
-
-These references informed hierarchy and navigation. No source code, copy, photographs, or project artwork was taken from either website.
-
-## Applied to this portfolio
-
-The hero states the owner's engineering focus in Korean. The original interactive Cloud / Edge AI / Kernel canvas remains a visual introduction to that focus.
-
-Five projects share one preview area with a persistent desktop index and a horizontally scrollable mobile selector. Each preview combines an original presentation image, outcome and measurement context, the owner's role, technologies, and access to the detailed case study. The light work section contrasts with the dark hero. Outcomes retain the dark/lime palette without implying live telemetry or production-wide performance guarantees.
-
-The project selector follows the tabs pattern: selected state, roving tab index, orientation-specific arrow keys, Home/End, and labelled panel. Next-project changes are announced through a status region. Reduced-motion preference suppresses preview transitions. Image viewing works directly from the preview and within case-study dialogs.
+assets/icons/arrow-right.svg and arrow-up-right.svg: unmodified Phosphor Icons Core 2.1.1, regular weight, MIT. The existing textual brand is retained.
 
 ## Validation
 
-- Browser checks at desktop 1440px and mobile 390px / 320px; no page-level horizontal overflow.
-- All five previews checked against their corresponding case-study title and image.
-- Desktop keyboard selection, mobile End navigation, next-project wraparound, and automatic tab-rail scrolling checked.
-- Direct image enlargement checked for correct image, focus restoration, and body scroll-lock cleanup.
-- JavaScript syntax checks and browser error-log inspection passed.
+See design-qa.md for the reference comparison, responsive browser checks and tested interactions. No build tool or runtime dependency was added.
