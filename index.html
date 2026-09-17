@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#141615">
+  <meta name="description" content="정진욱의 시스템 엔지니어링 포트폴리오. 클라우드와 엣지 AI부터 커널까지, 계측과 실험으로 성능의 차이를 만듭니다.">
+  <meta property="og:title" content="정진욱 — Below the surface.">
+  <meta property="og:description" content="클라우드 · 엣지 AI · 커널. 시스템의 깊이에서 찾은 해답들.">
+  <meta property="og:type" content="website">
+  <title>정진욱 — Systems, below the surface.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c7f86c'/%3E%3Cpath d='M18 16h28v23c0 16-28 16-28 0' fill='none' stroke='%23141615' stroke-width='8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#work">프로젝트로 바로가기</a>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="header">
+    <a class="brand" href="#top" aria-label="정진욱 홈">jj<span>↗</span></a>
+    <span class="header-role">JINUK JUNG <span>/ SYSTEMS ENGINEER</span></span>
+    <nav aria-label="주요 메뉴"><a href="#work">Work <span>05</span></a><a href="#about">About</a><a href="#contact" class="nav-contact">Let’s talk <span>↗</span></a></nav>
+  </header>
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-topline"><span>ENGINEERING THE INVISIBLE</span><span>PORTFOLIO / 2026</span></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-cross">+</span> 정진욱 · 시스템을 만드는 개발자</p>
+          <h1 id="hero-title">Below<br>the <em>surface.</em><span class="title-period">*</span></h1>
+          <div class="hero-bottom"><p>보이지 않는 곳에서,<br><strong>눈에 보이는 차이를 만듭니다.</strong></p><a href="#work" class="round-link" aria-label="프로젝트 살펴보기">↓</a></div>
+        </div>
+        <div class="system-art" aria-label="클라우드, 엣지, 커널 작업 영역 탐색">
+          <div class="art-coordinates" aria-hidden="true"><span>FIG. 01 — SYSTEM LAYERS</span><span class="crosshair">+</span></div>
+          <canvas id="system-canvas" aria-hidden="true"></canvas>
+          <div class="layer-orbit-label" aria-hidden="true">APPLICATION<br>↓<br>INFRASTRUCTURE<br>↓<br>KERNEL</div>
+          <div class="art-caption"><span id="layer-number">01 / 03</span><p id="layer-description" aria-live="polite">서비스가 안정적으로 동작하는<br>클라우드 인프라를 설계합니다.</p></div>
+          <div class="layer-switch" role="group" aria-label="작업 영역 선택"><button data-layer="0" aria-pressed="true">Cloud</button><button data-layer="1" aria-pressed="false">Edge AI</button><button data-layer="2" aria-pressed="false">Kernel</button></div>
+        </div>
+      </div>
+      <div class="hero-footer"><span>FROM CLOUD TO KERNEL.</span><span>복잡한 시스템을 이해하고, 측정하고, 개선합니다.</span><a href="#work">SCROLL TO EXPLORE <span>↓</span></a></div>
+    </section>
+
+    <div class="skill-ticker" aria-label="주요 기술"><div aria-hidden="true">KUBERNETES <i>✳</i> EDGE AI <i>✳</i> eBPF <i>✳</i> OBSERVABILITY <i>✳</i> CLOUD INFRASTRUCTURE <i>✳</i> KUBERNETES <i>✳</i> EDGE AI <i>✳</i> eBPF <i>✳</i> OBSERVABILITY <i>✳</i> CLOUD INFRASTRUCTURE <i>✳</i></div></div>
+
+    <section id="work" class="work section-pad">
+      <div class="section-heading reveal"><p class="eyebrow">01 / SELECTED WORK</p><h2>깊이 파고들고.<br><span>결과로 이야기합니다.</span></h2><p class="section-intro">현장의 문제에서 시작해<br>설계, 구현, 검증으로 이어진 작업들.</p></div>
+
+      <article class="project project-edge reveal">
+        <button class="project-visual edge-visual" data-project="edge" aria-label="이기종 엣지 AI 프로젝트 상세 보기">
+          <span class="visual-label">RUNTIME ORCHESTRATION / 2026</span>
+          <div class="edge-diagram" aria-hidden="true"><div class="diagram-top">STATE AGGREGATOR<span>observe → decide → execute</span></div><div class="node-connectors"></div><div class="node-row"><div class="device"><span>01</span><b>x86</b><small>GPU SERVER</small></div><div class="device active"><span>02</span><b>Jetson</b><small>EDGE INFERENCE</small></div><div class="device"><span>03</span><b>Pi 5</b><small>CAPTURE</small></div></div><div class="stage-track"><span>CAPTURE</span><i>→</i><span>PREPROCESS</span><i>→</i><span>INFERENCE</span></div></div>
+          <span class="visual-footer">Stage-level runtime replanning<span class="visual-open">↗</span></span>
+        </button>
+        <div class="project-info"><div class="project-overline"><span>01 — EDGE AI</span><span>RESEARCH & ENGINEERING</span></div><h3><button data-project="edge">장비는 달라도,<br>하나의 AI 워크플로우.</button></h3><p>x86, Jetson, Raspberry Pi가 협력하는 실행 환경. 실행 중 발생하는 병목을 관측하고, 워크플로우의 처리 단계를 재배치했습니다.</p><div class="project-result"><strong>12.7<span>%</span></strong><p>평균 E2E 지연 감소<br><small>정적 배치 대비 · 테스트베드 실험</small></p></div><div class="tags"><span>KubeEdge</span><span>Kubernetes</span><span>Prometheus</span></div><button class="text-link" data-project="edge">문제 해결 과정 보기 <span>↗</span></button></div>
+      </article>
+
+      <article class="project project-kernel reveal">
+        <button class="project-visual kernel-visual" data-project="kernel" aria-label="eBPF와 강화학습 프로젝트 상세 보기"><span class="visual-label">TAIL LATENCY CONTROL / MASTER’S RESEARCH</span><div class="latency-art" aria-hidden="true"><div class="latency-number">93<span>s</span><i>→</i><strong>2.2<span>s</span></strong></div><div class="latency-bars"><div><span>BASELINE</span><i class="before-bar"></i><b>93 s</b></div><div><span>OPTIMIZED</span><i class="after-bar"></i><b>2.2 s</b></div></div><div class="signal-path"><span>eBPF</span><b>→</b><span>DDPG</span><b>→</b><span>MQTT</span></div></div><span class="visual-footer">Measure deeper. Control smarter.<span class="visual-open">↗</span></span></button>
+        <div class="project-info"><div class="project-overline"><span>02 — KERNEL & NETWORK</span><span>RESEARCH</span></div><h3><button data-project="kernel">평균 뒤에 숨은<br>지연을 줄이다.</button></h3><p>느린 요청의 원인을 커널에서 찾았습니다. eBPF 계측과 강화학습을 연결해 MQTT 혼잡 환경의 전송 간격과 배치 크기를 제어했습니다.</p><div class="project-result"><strong>2.2<span>s</span></strong><p>혼잡 환경의 p99 지연<br><small>기준 실험 93초 → 제어 적용 2.2초</small></p></div><div class="tags"><span>eBPF</span><span>Reinforcement Learning</span><span>MQTT</span></div><button class="text-link" data-project="kernel">커널에서 찾은 해답 <span>↗</span></button></div>
+      </article>
+
+      <article class="project project-data reveal">
+        <button class="project-visual data-visual" data-project="robot" aria-label="반도체 로봇 데이터 프로젝트 상세 보기"><span class="visual-label">INDUSTRIAL DATA / 2023</span><div class="data-art" aria-hidden="true"><div class="data-grid"></div><div class="data-heading">30,000,000<span>RECORDS. ONE CLEAR VIEW.</span></div><svg class="data-chart" viewBox="0 0 600 150" fill="none"><path d="M0 117L20 108L40 119L60 81L80 106L100 66L120 98L140 84L160 119L180 78L200 106L220 54L240 81L260 50L280 92L300 60L320 77L340 23L360 73L380 51L400 66L420 37L440 55L460 15L480 58L500 33L520 60L540 26L560 43L580 13L600 28" stroke="currentColor" stroke-width="2"/><path d="M0 145H600M0 100H600M0 55H600" stroke="currentColor" stroke-opacity=".15"/></svg><span class="chart-note">시계열 데이터 구조를 표현한 개념도</span></div><span class="visual-footer">From 40+ seconds to 7.<span class="visual-open">↗</span></span></button>
+        <div class="project-info"><div class="project-overline"><span>03 — DATA & BACKEND</span><span>SSAFY · 기업 연계</span></div><h3><button data-project="robot">3천만 건의 데이터,<br>7초 안에 한눈에.</button></h3><p>반도체 제조 로봇의 1년 치 상태 데이터를 조회하는 시스템. 저장 구조부터 쿼리, 압축, 샤딩까지 병목을 단계적으로 개선했습니다.</p><div class="project-result"><strong>7<span>s</span></strong><p>평균 데이터 조회 시간<br><small>약 3,000만 건 · 프로젝트 측정 기준</small></p></div><div class="tags"><span>Spring Boot</span><span>MongoDB</span><span>SSE</span></div><button class="text-link" data-project="robot">데이터 구조의 변화 보기 <span>↗</span></button></div>
+      </article>
+
+      <div class="compact-projects reveal">
+        <button class="compact-project" data-project="cloud"><span class="compact-number">04 / CLOUD</span><h3>서비스가 계속<br>살아있도록.</h3><p>모두의 튜터 · AWS 인프라와 배포 자동화</p><span class="compact-tags">ECS / VPC / RDS / CI·CD</span><span class="compact-arrow">↗</span></button>
+        <button class="compact-project" data-project="quake"><span class="compact-number">05 / OBSERVABILITY</span><h3>데이터를 넘어,<br>상황을 읽는 관제.</h3><p>지진 데이터 처리와 실시간 모니터링</p><span class="compact-tags">Kafka / Next.js / Grafana</span><span class="compact-arrow">↗</span></button>
+      </div>
+    </section>
+
+    <section id="about" class="about section-pad">
+      <div class="about-top reveal"><p class="eyebrow">02 / THE WAY I THINK</p><h2>“왜 느릴까?”에서<br><em>시작하는 사람.</em></h2><div class="about-description"><p>애플리케이션을 만들다가 데이터 구조를 바꾸고,<br>인프라를 운영하다 커널까지 내려갔습니다.</p><p>정답처럼 보이는 설계보다 실제 환경에서 동작하는 구조를 좋아합니다. 숫자로 문제를 정의하고, 실험으로 가설을 확인하고, 다른 사람이 재현할 수 있는 형태로 남깁니다.</p></div></div>
+      <div class="principles reveal"><div><span>01</span><h3>Observe.</h3><p>로그와 메트릭을 연결해<br>증상 뒤의 원인을 찾습니다.</p></div><div><span>02</span><h3>Experiment.</h3><p>같은 조건에서 비교하고<br>효과와 한계를 함께 확인합니다.</p></div><div><span>03</span><h3>Make it work.</h3><p>구현에서 멈추지 않고<br>배포와 운영까지 연결합니다.</p></div></div>
+      <div class="journey reveal"><h3>경험이 쌓인 경로</h3><div><p><span>2026</span><b>한국전자통신연구원</b><small>이기종 엣지 AI 실행 환경 · 배포와 모니터링</small></p><p><span>2024 — 2026</span><b>경북대학교 대학원</b><small>컴퓨터학부 · 클라우드, 엣지, 커널 연구</small></p><p><span>2024</span><b>SW 마에스트로</b><small>AWS 인프라 · 백엔드 · 서비스 운영</small></p><p><span>2022 — 2023</span><b>삼성 청년 SW 아카데미</b><small>팀 프로젝트 · 기업 연계 시스템 개발</small></p></div></div>
+    </section>
+
+    <section class="research section-pad" id="research"><div class="research-heading reveal"><p class="eyebrow">03 / RESEARCH NOTES</p><h2>만들고, 검증하고,<br>기록한 것들.</h2></div><div class="research-list reveal"><a href="https://github.com/dsa04156/workflow-edge-orch" target="_blank" rel="noopener noreferrer"><span>2026 / ISET</span><h3>Stage-level Runtime Replanning<br><small>이기종 엣지 AI 환경의 런타임 재배치</small></h3><span class="research-kind">RELATED CODE ↗</span></a><a href="https://github.com/dsa04156/RL-eBPF-MQQT" target="_blank" rel="noopener noreferrer"><span>MASTER’S RESEARCH</span><h3>Kernel signals, better decisions.<br><small>강화학습을 활용한 MQTT Pub/Sub 성능 향상</small></h3><span class="research-kind">RELATED CODE ↗</span></a><a href="https://github.com/dsa04156/CrossLayerGuard-on-BPFDoor" target="_blank" rel="noopener noreferrer"><span>2025 / SECURITY</span><h3>Cross-layer verification with eBPF<br><small>계층 간 교차검증 기반 커널 백도어 탐지</small></h3><span class="research-kind">RELATED CODE ↗</span></a><div class="research-entry"><span>2025 / JKICS</span><h3>클러스터 내 Container Registry<br><small>컨테이너 이미지 배포 효율성 향상 · 학술지 게재</small></h3><span class="research-kind">PUBLICATION</span></div></div></section>
+
+    <section id="contact" class="contact section-pad"><div class="contact-top"><p class="eyebrow">NEXT / LET’S BUILD SOMETHING THAT WORKS.</p><span aria-hidden="true">✳</span></div><h2 class="reveal">더 깊은 문제를,<br><a href="mailto:dsa04156@naver.com">함께 풀어볼까요? <span>↗</span></a></h2><div class="contact-bottom"><a href="mailto:dsa04156@naver.com">dsa04156@naver.com ↗</a><a href="https://github.com/dsa04156" target="_blank" rel="noopener noreferrer">GitHub ↗</a><button id="copy-email" aria-label="이메일 주소 복사">이메일 복사 <span>＋</span></button><span id="copy-status" role="status"></span></div></section>
+  </main>
+  <footer><span>© 2026 JINUK JUNG</span><span>BUILT WITH CURIOSITY. GROUNDED IN EVIDENCE.</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span id="dialog-category"></span><button id="dialog-close" aria-label="프로젝트 상세 닫기">닫기 <span>×</span></button></div><div id="dialog-body"></div><div class="dialog-bottom"><button id="next-project">다음 프로젝트 <span>→</span></button></div></dialog>
+</body>
+</html>
