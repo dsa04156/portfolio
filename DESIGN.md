@@ -1,3 +1,13 @@
+# Current visual direction — 2026-09-17
+
+The user selected [Hanwha Finance recruitment](https://www.recruit-hanwhafinance.com/) as the visual reference. Its desktop hero and internal philosophy section were inspected directly. The portfolio now follows its black background, orange oversized headline, widely spaced composition, moving orbital graphic, circular action links, and dark content panels.
+
+The headline and all portfolio content remain original. The canvas sculpture is independently implemented with mathematical 3D rotation, perspective, depth-sorted bands, and pointer response. No company logo, recruitment copy, video, or graphic asset was imported. The earlier project-index interaction remains, restyled to match the new direction.
+
+The canvas pauses offscreen and in background tabs, supports explicit pause/resume without jumping time, and respects reduced-motion preferences. The mobile layout was checked at 390px and 320px; a caption/action overlap was corrected. Preview switching, project detail, motion controls, and contact navigation were checked in the browser.
+
+---
+
 # Portfolio design notes
 
 ## Reference review — 2026-09-17

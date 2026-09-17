@@ -152,7 +152,7 @@ document.querySelector('#copy-email').addEventListener('click', async () => {
   setTimeout(() => { status.textContent = ''; }, 6000);
 });
 
-// A conceptual, interactive three-layer system diagram, not production telemetry.
+// A conceptual orbital sculpture for three engineering domains, not live telemetry.
 const canvas = document.querySelector('#system-canvas');
 const ctx = canvas.getContext('2d');
 const descriptions = [
@@ -163,11 +163,12 @@ const descriptions = [
 const layerButtons = [...document.querySelectorAll('[data-layer]')];
 let layer = 0, w = 0, h = 0, pointerX = 0, pointerY = 0, smoothX = 0, smoothY = 0;
 let visibleCanvas = true, frameId = null;
+let sceneTime = 0, lastFrameTime = null;
 function resizeCanvas() {
   const r = canvas.getBoundingClientRect(); w = r.width; h = r.height;
   const dpr = Math.min(devicePixelRatio || 1, 2);
   canvas.width = w * dpr; canvas.height = h * dpr; ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
-  if (reducedMotion.matches) draw(0);
+  if (reducedMotion.matches || userPaused) draw(sceneTime);
 }
 layerButtons.forEach(button => button.addEventListener('click', () => {
   layer = Number(button.dataset.layer);
@@ -175,58 +176,115 @@ layerButtons.forEach(button => button.addEventListener('click', () => {
   document.querySelector('#layer-number').textContent = `0${layer+1} / 03`;
   document.querySelector('#layer-description').textContent = descriptions[layer];
   document.querySelector('#layer-description').style.whiteSpace = 'pre-line';
-  if (reducedMotion.matches) draw(0);
+  if (reducedMotion.matches || userPaused) draw(sceneTime);
 }));
 canvas.addEventListener('pointermove', e => {
   if (e.pointerType === 'touch') return;
   const r = canvas.getBoundingClientRect(); pointerX = (e.clientX-r.left)/w-.5; pointerY = (e.clientY-r.top)/h-.5;
 });
 canvas.addEventListener('pointerleave', () => { pointerX = 0; pointerY = 0; });
+// A procedural 3D orbital sculpture. Each band is depth-sorted and reacts to the pointer.
+let userPaused = false;
+const motionButton = document.querySelector('#motion-toggle');
+const orbitBands = [
+  {r:220, width:10, rx:.6, ry:.8, rz:-.5, style:'stripe', color:[199,196,186], group:0},
+  {r:195, width:15, rx:1.15, ry:-.45, rz:.1, style:'checker', color:[255,126,40], group:1},
+  {r:160, width:6, rx:.25, ry:-1.1, rz:.7, style:'bead', color:[255,123,27], group:2},
+  {r:245, width:1, rx:1.15, ry:.65, rz:1.65, style:'wire', color:[121,115,103], group:-1},
+  {r:208, width:8, rx:-.8, ry:.3, rz:-.6, style:'stripe', color:[184,181,172], group:1},
+  {r:132, width:13, rx:1.5, ry:.5, rz:.65, style:'checker', color:[224,211,174], group:0},
+  {r:257, width:1, rx:.2, ry:1.05, rz:-.2, style:'wire', color:[104,102,97], group:-1}
+];
 function draw(ms) {
   if (!ctx || !w) return;
-  const time = reducedMotion.matches ? 0 : ms * .00035;
-  smoothX += (pointerX-smoothX)*.04; smoothY += (pointerY-smoothY)*.04;
-  ctx.clearRect(0,0,w,h);
-  const scale = w / 520, centerX = w*.49, centerY = h*.38;
-  const rotation = -.35 + smoothX*.25 + Math.sin(time*.3)*.07;
-  function project(x,y,z) {
-    const rx=x*Math.cos(rotation)-z*Math.sin(rotation), rz=x*Math.sin(rotation)+z*Math.cos(rotation);
-    return [centerX+(rx-rz*.3)*scale, centerY+(y+rz*.37+smoothY*rx*.1)*scale];
+  const t = reducedMotion.matches ? 0 : ms * .00012;
+  smoothX += (pointerX - smoothX) * .05;
+  smoothY += (pointerY - smoothY) * .05;
+  ctx.clearRect(0, 0, w, h);
+  const scale = Math.min(w / 650, h / 560);
+  const centerX = w * .52, centerY = h * .41;
+  const surfaces = [];
+  function rotate(p, rx, ry, rz) {
+    let [x, y, z] = p;
+    [y, z] = [y * Math.cos(rx) - z * Math.sin(rx), y * Math.sin(rx) + z * Math.cos(rx)];
+    [x, z] = [x * Math.cos(ry) + z * Math.sin(ry), -x * Math.sin(ry) + z * Math.cos(ry)];
+    return [x * Math.cos(rz) - y * Math.sin(rz), x * Math.sin(rz) + y * Math.cos(rz), z];
   }
-  // Ordered wireframe sheets show application, infrastructure, and kernel layers.
-  for(let sheet=2;sheet>=0;sheet--) {
-    const highlighted = sheet===layer, count=16, points=[];
-    for(let row=0;row<count;row++) {
-      const line=[];
-      for(let col=0;col<count;col++) {
-        const x=(col/(count-1)-.5)*335, z=(row/(count-1)-.5)*245;
-        const ripple=Math.sin(col*.42+row*.32-time*2+sheet)*10 + Math.cos(row*.6-time)*5;
-        line.push(project(x,(sheet-1)*83+ripple,z));
+  function vertex(angle, radius, band) {
+    const p = rotate([Math.cos(angle) * radius, Math.sin(angle) * radius, 0], band.rx, band.ry + t * .28, band.rz);
+    return rotate(p, -.18 + smoothY * .7, t * .35 + smoothX * .8, -.17);
+  }
+  function project(p) {
+    const perspective = 900 / (900 - p[2]);
+    return [centerX + p[0] * scale * perspective, centerY + p[1] * scale * perspective];
+  }
+  orbitBands.forEach((band, bandIndex) => {
+    const count = band.style === 'bead' ? 62 : band.style === 'wire' ? 150 : 100;
+    const selected = band.group === layer;
+    for (let i = 0; i < count; i++) {
+      const start = i / count * Math.PI * 2 + t * (bandIndex % 2 ? -.12 : .12);
+      const end = start + Math.PI * 2 / count * (band.style === 'stripe' ? .72 : 1.015);
+      if (band.style === 'wire' || band.style === 'bead') {
+        const first = vertex(start, band.r, band), last = vertex(end, band.r, band);
+        surfaces.push({points:[first,last], depth:(first[2]+last[2])/2, band, selected, bead:band.style==='bead', tile:i});
+      } else {
+        for (let row = 0; row < (band.style === 'checker' ? 2 : 1); row++) {
+          const low = band.r - band.width / 2 + row * band.width / 2;
+          const high = band.style === 'checker' ? low + band.width / 2 : band.r + band.width / 2;
+          const points = [vertex(start,low,band), vertex(end,low,band), vertex(end,high,band), vertex(start,high,band)];
+          surfaces.push({points,depth:points.reduce((sum,p)=>sum+p[2],0)/4,band,selected,tile:i+row});
+        }
       }
-      points.push(line);
     }
-    ctx.lineWidth=highlighted?.8:.55;
-    ctx.strokeStyle=highlighted?'rgba(199,248,108,.65)':'rgba(115,139,94,.25)';
-    for(let row=0;row<count;row++) {
-      ctx.beginPath();points[row].forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();
-    }
-    for(let col=0;col<count;col++) {
-      ctx.beginPath();points.forEach((row,i)=>i?ctx.lineTo(...row[col]):ctx.moveTo(...row[col]));ctx.stroke();
-    }
-    if(highlighted) {
-      for(let n=0;n<7;n++) {
-        const row=(n*3+2)%count, col=(n*5+3)%count, [x,y]=points[row][col];
-        const pulse=2+Math.sin(time*3+n)*.6;
-        ctx.shadowBlur=12;ctx.shadowColor='#c7f86c';ctx.fillStyle='#d7ff99';
-        ctx.beginPath();ctx.arc(x,y,pulse,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
-      }
-      const [x,y]=points[0][15]; ctx.fillStyle='#bdd79e';ctx.font=`${Math.max(9,11*scale)}px monospace`;
-      ctx.fillText(['CLOUD','EDGE AI','KERNEL'][sheet],x+12,y+4);
+  });
+  surfaces.sort((a,b) => a.depth - b.depth);
+  for (const face of surfaces) {
+    const {band, depth, selected} = face;
+    const light = .48 + (depth + 270) / 540 * .48;
+    const emphasis = band.group < 0 ? .6 : selected ? 1 : .68;
+    let rgb = band.color;
+    if (band.style === 'checker' && face.tile % 2) rgb = [32,30,26];
+    const color = `rgb(${rgb.map(v=>Math.round(v*light*emphasis)).join(',')})`;
+    const projected = face.points.map(project);
+    ctx.fillStyle = color; ctx.strokeStyle = color;
+    if (face.bead) {
+      const radius = (selected ? 3.6 : 2.8) * scale * (900 / (900 - depth));
+      ctx.beginPath(); ctx.arc(projected[0][0], projected[0][1], radius, 0, Math.PI * 2); ctx.fill();
+      if (selected && depth > 90) { ctx.fillStyle='#ffbf76'; ctx.beginPath(); ctx.arc(projected[0][0]-radius*.2, projected[0][1]-radius*.3, radius*.3, 0, Math.PI*2); ctx.fill(); }
+    } else {
+      ctx.beginPath(); projected.forEach((point,i)=>i ? ctx.lineTo(...point) : ctx.moveTo(...point));
+      if (band.style === 'wire') { ctx.lineWidth=.6; ctx.stroke(); }
+      else { ctx.closePath(); ctx.fill(); }
     }
   }
 }
-function frame(t) { frameId=null; draw(t); if(visibleCanvas && !document.hidden && !reducedMotion.matches) frameId=requestAnimationFrame(frame); }
-function resume() { if(frameId===null && visibleCanvas && !document.hidden && !reducedMotion.matches) frameId=requestAnimationFrame(frame); else if(reducedMotion.matches) draw(0); }
+function frame(t) {
+  frameId = null;
+  if (lastFrameTime !== null) sceneTime += Math.min(t - lastFrameTime, 64);
+  lastFrameTime = t;
+  draw(sceneTime);
+  if (visibleCanvas && !document.hidden && !reducedMotion.matches && !userPaused) frameId = requestAnimationFrame(frame);
+  else lastFrameTime = null;
+}
+function resume() {
+  if (frameId === null && visibleCanvas && !document.hidden && !reducedMotion.matches && !userPaused) frameId = requestAnimationFrame(frame);
+  else if (reducedMotion.matches || userPaused) draw(sceneTime);
+}
+function updateMotionButton() {
+  if (!motionButton) return;
+  motionButton.disabled = reducedMotion.matches;
+  motionButton.setAttribute('aria-pressed', String(userPaused || reducedMotion.matches));
+  motionButton.setAttribute('aria-label', reducedMotion.matches ? '기기 설정에 따라 그래픽 움직임 제한' : userPaused ? '그래픽 움직임 재생' : '그래픽 움직임 일시정지');
+  motionButton.textContent = reducedMotion.matches ? '움직임 제한' : userPaused ? '재생 ▷' : '일시정지 Ⅱ';
+}
+motionButton?.addEventListener('click', () => {
+  userPaused = !userPaused;
+  if (userPaused && frameId !== null) { cancelAnimationFrame(frameId); frameId = null; lastFrameTime = null; }
+  updateMotionButton();
+  if (!userPaused) resume();
+});
+reducedMotion.addEventListener('change', updateMotionButton);
+updateMotionButton();
 new ResizeObserver(resizeCanvas).observe(canvas);
 new IntersectionObserver(([entry]) => { visibleCanvas=entry.isIntersecting; resume(); }).observe(canvas);
 document.addEventListener('visibilitychange', resume);
