@@ -57,6 +57,13 @@ const projects = {
 };
 
 const dialog = document.querySelector('#project-dialog');
+const projectImages = {
+  edge: [{src:'assets/edge-dashboard.png',title:'디바이스 운영 대시보드',caption:'전공기술면접 발표자료 7쪽 · 발표 당시의 노드, 디바이스, 센서 상태를 담은 실제 구현 화면.'}],
+  kernel: [{src:'assets/kernel-results.png',title:'커널 신호 기반 제어 실험',caption:'전공기술면접 발표자료 9쪽 · p99 지연, TCP 송신 버퍼, RTT, 처리량의 원본 비교 그래프. 지표별 축과 범례를 함께 확인할 수 있습니다.'}],
+  robot: [{src:'assets/robot-dashboard.png',title:'로봇 상태 데이터 시각화',caption:'전공기술면접 발표자료 11쪽 · 컴포넌트 상태와 시계열 데이터를 확인하는 실제 구현 화면.'},{src:'assets/robot-architecture.png',title:'로봇 관리 시스템 구성도',caption:'전공기술면접 발표자료 11쪽 · React, NGINX, Spring Boot, MongoDB 기반 시스템 구조.'}],
+  cloud: [{src:'assets/cloud-architecture.png',title:'AWS 서비스 인프라 구성도',caption:'전공기술면접 발표자료 11쪽 · VPC, ECS, RDS, 모니터링과 GitHub Actions 배포 흐름.'}],
+  quake: [{src:'assets/earthquake-dashboard.png',title:'지진 센서 관제 대시보드',caption:'전공기술면접 발표자료 11쪽 · 발표 당시 전국 센서의 위치와 상태를 담은 구현 화면.'}]
+};
 let activeProject = 'edge';
 let opener;
 function renderProject(key) {
@@ -74,6 +81,16 @@ function renderProject(key) {
   add('p', p.summary, 'dialog-summary');
   const meta = add('div', '', 'dialog-meta');
   add('span', p.period, '', meta); add('span', p.role, '', meta);
+  const gallery = add('div', '', 'project-gallery');
+  for (const asset of projectImages[key] || []) {
+    const figure = add('figure', '', '', gallery);
+    const button = add('button', '', 'gallery-image-button', figure);
+    button.setAttribute('aria-label', `이미지 확대: ${asset.title}`);
+    const img = document.createElement('img'); img.src = asset.src; img.alt = asset.title; img.decoding = 'async';
+    button.append(img); add('span', '크게 보기 ↗', 'image-expand-hint', button);
+    add('figcaption', asset.caption, '', figure);
+    button.addEventListener('click', () => openImage(asset, button));
+  }
   for (const [label, content] of [['문제', p.problem], ['접근', p.actions], ['결과', p.result]]) {
     const block = add('section', '', 'dialog-block'); add('h3', label, '', block);
     if (Array.isArray(content)) { const ul = add('ul', '', '', block); content.forEach(t => add('li', t, '', ul)); }
@@ -97,6 +114,25 @@ dialog.addEventListener('close', () => { document.body.classList.remove('modal-o
 document.querySelector('#next-project').addEventListener('click', () => {
   const keys = Object.keys(projects); renderProject(keys[(keys.indexOf(activeProject) + 1) % keys.length]);
   document.querySelector('#dialog-close').focus({preventScroll:true});
+});
+
+const imageDialog = document.querySelector('#image-dialog');
+let imageOpener;
+function openImage(asset, button) {
+  imageOpener = button;
+  document.querySelector('#image-title').textContent = asset.title;
+  const image = document.querySelector('#expanded-image'); image.src = asset.src; image.alt = asset.title;
+  document.querySelector('#image-caption').textContent = asset.caption;
+  imageDialog.classList.remove('actual-size');
+  const zoom = document.querySelector('#image-zoom'); zoom.setAttribute('aria-pressed', 'false'); zoom.textContent = '원본 크기';
+  imageDialog.showModal(); document.querySelector('#image-close').focus({preventScroll:true});
+}
+document.querySelector('#image-close').addEventListener('click', () => imageDialog.close());
+imageDialog.addEventListener('close', () => imageOpener?.focus({preventScroll:true}));
+document.querySelector('#image-zoom').addEventListener('click', e => {
+  const actual = imageDialog.classList.toggle('actual-size');
+  e.currentTarget.setAttribute('aria-pressed', String(actual));
+  e.currentTarget.textContent = actual ? '화면에 맞추기' : '원본 크기';
 });
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
